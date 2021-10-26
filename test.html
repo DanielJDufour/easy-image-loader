@@ -6,8 +6,18 @@
   </head>
   <body>
     <script>
+      test("timeout", async ({ eq }) => {
+        let err;
+        try {
+          const img = await loadImage("test.jpg", { timeout: 0.01 });
+        } catch (e) {
+          err = e;
+        }
+        eq(err.message, "timeout");
+      });
+
       test("old-school promise", ({ eq }) => {
-        return loadImage("test.jpg", { debug: true }).then(img => {
+        return loadImage("test.jpg", { debug: false, timeout: 1e5 }).then(img => {
           eq(img.tagName, "IMG");
         });
       });

@@ -37,13 +37,20 @@ or
 You can cache images with `useCache` set to true, so subsequent requests for an image
 avoid additional network requests.
 ```js
-loadImage("test.jpg", { useCache: true });
+await loadImage("test.jpg", { useCache: true });
+```
+
+# timeout
+You can limit how long to wait for an image to load in milliseconds by setting timeout to a number.
+```js
+// wait 5000 milliseconds (5 seconds)
+await loadImage("test.jpg", { timeout: 5000 });
 ```
 
 # debugging
 You can pass in an options object with `debug` set to true for additional logging.
 ```js
-loadImage("test.jpg", { debug: true });
+await loadImage("test.jpg", { debug: true });
 ```
 will output
 ```
