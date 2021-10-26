@@ -1,5 +1,5 @@
 # easy-image-loader
-Easily Load an Image. Returns a Promise.
+> Easily Load an Image. Returns a Promise.
 
 # load via script tag
 ```bash
@@ -26,7 +26,7 @@ or
 </head>
 <body>
     <script>
-        loadImage("placeholder").then(img => {
+        loadImage("test.jpg").then(img => {
             console.log("loaded image:", img);
         });
     </script>
@@ -37,16 +37,16 @@ or
 You can cache images with `useCache` set to true, so subsequent requests for an image
 avoid additional network requests.
 ```js
-loadImage("placeholder", { useCache: true });
+loadImage("test.jpg", { useCache: true });
 ```
 
 # debugging
 You can pass in an options object with `debug` set to true for additional logging.
 ```js
-loadImage("placeholder", { debug: true });
+loadImage("test.jpg", { debug: true });
 ```
 will output
 ```
-[easy-image-loader] starting to load placeholder
-[easy-image-loader] successfully loaded placeholder
+[easy-image-loader] starting to load test.jpg
+[easy-image-loader] successfully loaded test.jpg
 ```
