@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="/index.js"></script>
+    <script src="https://unpkg.com/flug"></script>
+  </head>
+  <body>
+    <script>
+      test("old-school promise", ({ eq }) => {
+        return loadImage("test.jpg", { debug: true }).then(img => {
+          eq(img.tagName, "IMG");
+        });
+      });
+
+      test("async", async ({ eq }) => {
+        const img = await loadImage("test.jpg", { debug: false });
+        eq(img.tagName, "IMG");
+      });
+
+      test("old-school error", async ({ eq }) => {
+        return loadImage("missing.jpg").catch(err => {
+          eq(err.type, "error");
+          eq(err.path[0].tagName, "IMG");
+        });
+      });
+
+      test("async error", async ({ eq }) => {
+        let err;
+        try {
+          await loadImage("missing.jpg", { debug: false });
+        } catch (e) {
+          err = e;
+        }
+        eq(err.type, "error");
+        eq(err.path[0].tagName, "IMG");
+      });
+
+      test("cache", async ({ eq }) => {
+        const images = new Set();
+        for (let i = 0; i < 100; i++) {
+          const img = await loadImage("test.jpg", { useCache: true });
+          images.add(img);
+          eq(images.size, 1);
+          eq(img.tagName, "IMG");
+        }
+      });
+    </script>
+  </body>
+</html>

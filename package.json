@@ -1,0 +1,28 @@
+{
+  "name": "easy-image-loader",
+  "version": "0.0.0",
+  "description": "Easily Load an Image. Returns a Promise.",
+  "main": "index.js",
+  "scripts": {
+    "format": "npx prettier --write *.js",
+    "test": "srvd --debug --port=3000 --max=7 --wait=5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielJDufour/easy-image-loader.git"
+  },
+  "keywords": [
+    "image",
+    "img",
+    "loader"
+  ],
+  "author": "Daniel J. Dufour",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/DanielJDufour/easy-image-loader/issues"
+  },
+  "homepage": "https://github.com/DanielJDufour/easy-image-loader#readme",
+  "devDependencies": {
+    "srvd": "^0.3.1"
+  }
+}
