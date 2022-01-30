@@ -3,6 +3,7 @@ var loadImageCache = {};
 function loadImage(url, options) {
   var debug = (options && options.debug) || false;
   var useCache = (options && options.useCache) || false;
+  var crossOrigin = (options && options.crossOrigin) || null;
   if (debug) console.log("[easy-image-loader] starting to load", url);
 
   if (useCache && loadImageCache[url]) return loadImageCache[url];
@@ -21,6 +22,7 @@ function loadImage(url, options) {
       reject(error);
     };
     img.src = url;
+    img.crossOrigin = crossOrigin;
     if (options && typeof options.timeout === "number") {
       setTimeout(() => {
         if (debug) console.error("[easy-image-loader] timed out loading", url);
