@@ -40,6 +40,13 @@ avoid additional network requests.
 await loadImage("test.jpg", { useCache: true });
 ```
 
+# crossOrigin
+You can configure to use a cross-origin request with `crossOrigin` set to `anonymous`.
+See [HTMLImageElement.crossOrigin](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/crossOrigin) for details.
+```js
+await loadImage("test.jpg", { crossOrigin: "anonymous" });
+```
+
 # timeout
 You can limit how long to wait for an image to load in milliseconds by setting timeout to a number.
 ```js
