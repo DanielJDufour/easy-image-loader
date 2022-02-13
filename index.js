@@ -36,6 +36,10 @@ function loadImage(url, options) {
   return promise;
 }
 
+if (typeof define === "function" && define.amd)
+  define(function () {
+    return loadImage;
+  });
 if (typeof window !== "undefined") window.loadImage = loadImage;
 if (typeof self !== "undefined") self.loadImage = loadImage;
 if (typeof global !== "undefined") global.loadImage = loadImage;
